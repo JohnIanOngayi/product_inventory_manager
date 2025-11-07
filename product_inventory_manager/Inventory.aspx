@@ -17,7 +17,7 @@
                 <tr>
                     <td>Products</td>
                     <td>
-                        <asp:DropDownList ID="prodsDrpDwn" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="prodsDrpDwn" runat="server" AutoPostBack="true" OnSelectedIndexChanged="prodsDrpDwn_SelectedIndexChanged"></asp:DropDownList>
                     </td>
                 </tr>
 

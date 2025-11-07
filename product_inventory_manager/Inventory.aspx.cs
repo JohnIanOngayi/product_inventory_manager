@@ -34,7 +34,8 @@ namespace product_inventory_manager
             List<Product> products = _inventoryManager.GetProducts();
             prodsDrpDwn.DataSource = products;
             prodsDrpDwn.DataBind();
-            prodsDrpDwn.Items.Insert(0, "Select A Product");
+            prodsDrpDwn.Items.Insert(0, new ListItem("-- Select Product --", ""));
+            //prodsDrpDwn.Items.Insert(0, "Select A Product");
         }
 
         private void fillOrdersGridView()
@@ -42,6 +43,13 @@ namespace product_inventory_manager
             List<Order> orders = _inventoryManager.GetOrders();
             grdvOrders.DataSource = orders;
             grdvOrders.DataBind();
+        }
+
+        protected void prodsDrpDwn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedValue = Convert.ToInt32(prodsDrpDwn.SelectedValue);
+            var prod = _inventoryManager.GetProduct(selectedValue);
+            txtProductRate.Text = prod.Rate.ToString();
         }
     }
 }
