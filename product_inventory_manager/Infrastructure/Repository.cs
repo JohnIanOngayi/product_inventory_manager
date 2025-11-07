@@ -123,7 +123,7 @@ namespace product_inventory_manager.Infrastructure
         {
             var list = new List<Product>();
             using (var conn = new MySqlConnection(_connectionString))
-            using (var cmd = new MySqlCommand("sp_emp_ops", conn) { CommandType = CommandType.StoredProcedure })
+            using (var cmd = new MySqlCommand(_storedProcedure, conn) { CommandType = CommandType.StoredProcedure })
             {
                 cmd.Parameters.AddWithValue("prodId", DBNull.Value);
                 cmd.Parameters.AddWithValue("prodName", DBNull.Value);
@@ -198,7 +198,7 @@ namespace product_inventory_manager.Infrastructure
         {
             var list = new List<Order>();
             using (var conn = new MySqlConnection(_connectionString))
-            using (var cmd = new MySqlCommand("sp_emp_ops", conn) { CommandType = CommandType.StoredProcedure })
+            using (var cmd = new MySqlCommand(_storedProcedure, conn) { CommandType = CommandType.StoredProcedure })
             {
                 cmd.Parameters.AddWithValue("prodId", DBNull.Value);
                 cmd.Parameters.AddWithValue("prodName", DBNull.Value);
