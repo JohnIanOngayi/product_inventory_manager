@@ -10,6 +10,6 @@ namespace product_inventory_manager.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int Quantity { get; set; } // In inventory
-        public float Price { get; set; }
+        public float Rate { get; set; }
     }
 }
