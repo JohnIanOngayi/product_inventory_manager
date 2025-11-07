@@ -60,5 +60,16 @@ namespace product_inventory_manager.Domain
         {
             return _repository.GetOrders();
         }
+
+        public int HandleOrder(Order order)
+        {
+            Product prod = _repository.GetProduct(order.ProductId);
+            int newProdQuantity = prod.Quantity - order.ProductQuantity;
+            prod.Quantity = newProdQuantity;
+            int x = _repository.UpdateProduct(prod);
+            int y = _repository.InsertOrder(order);
+
+            return x > 0 && y > 0 ? 1 : 0;
+        }
     }
 }

@@ -150,7 +150,7 @@ namespace product_inventory_manager
                     OrderValue = product.Rate * orderQuantity,
                 };
 
-                int result = _inventoryManager.AddOrder(newOrder);
+                int result = _inventoryManager.HandleOrder(newOrder);
 
                 if (result > 0)
                 {
